@@ -1,0 +1,118 @@
+table Risk
+	lineageTag: e0d64000-aa95-4204-92e8-842052ae5019
+
+	measure 'Eligible Series' = COUNTROWS(Risk)
+		formatString: 0
+		lineageTag: 9dea4f90-2d28-4c5a-86b2-587fe71cbf14
+
+	measure 'Highest Risk' = MAX(Risk[risk_score])
+		formatString: 0.0
+		lineageTag: 5ed0fb43-c107-44fb-b815-92f7edf67111
+
+	column series_id
+		dataType: double
+		lineageTag: ea199e55-dc4b-493f-82b4-ba5a49967947
+		summarizeBy: sum
+		sourceColumn: series_id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column series_label
+		dataType: string
+		lineageTag: 734e2d75-ac2c-44d7-aacf-cb9115f157ea
+		sourceColumn: series_label
+
+	column commodity
+		dataType: string
+		lineageTag: c9602f90-6334-4c30-bc86-ab27af0ef968
+		sourceColumn: commodity
+
+	column unit
+		dataType: string
+		lineageTag: c7311196-2438-45a2-877c-c7838bdc3564
+		sourceColumn: unit
+
+	column pricetype
+		dataType: string
+		lineageTag: d90050b8-52be-4c92-aef4-a5d1b74e5be1
+		sourceColumn: pricetype
+
+	column risk_score
+		dataType: double
+		lineageTag: 511406e8-fc15-4cea-946d-8f924f38409d
+		sourceColumn: risk_score
+
+	column mom_pct
+		dataType: double
+		lineageTag: 3f369047-a36b-4531-b4db-456a9292592d
+		sourceColumn: mom_pct
+
+	column cv
+		dataType: double
+		lineageTag: 31da8249-ef0a-4f7e-976e-90dafbe3769e
+		sourceColumn: cv
+
+	column market_count
+		dataType: double
+		lineageTag: 2b438a78-6a3f-4679-a654-39da835de5eb
+		summarizeBy: sum
+		sourceColumn: market_count
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Risk-snapshot = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [series_id = nullable number, series_label = nullable text, commodity = nullable text, unit = nullable text, pricetype = nullable text, risk_score = nullable number, mom_pct = nullable number, cv = nullable number, market_count = nullable number], {
+				        {7, "Carrots | kg | retail", "carrots", "kg", "retail", 100, 58.6206896552, 0.444640731622, 3},
+				        {10, "Chili (Green) | kg | retail", "chili (green)", "kg", "retail", 100, 54.9386701097, 0.445752574088, 3},
+				        {72, "Tomatoes (Red) | kg | retail", "tomatoes (red)", "kg", "retail", 100, 55.5555555556, 0.46939759314, 3},
+				        {12, "Cucumber (Short, Khira) | kg | retail", "cucumber (short, khira)", "kg", "retail", 80.6197740923, 65.1162790698, 0.203098870462, 3},
+				        {48, "Papaya (Green) | kg | retail", "papaya (green)", "kg", "retail", 70.6652053945, 28.5948094459, 0.153326026972, 3},
+				        {49, "Potatoes (Holland, White) | kg | retail", "potatoes (holland, white)", "kg", "retail", 69.0600226501, 4.53001132503, 0.327287876001, 4},
+				        {30, "Gourd (Bottle) | kg | retail", "gourd (bottle)", "kg", "retail", 68.3371107656, 22.1374045802, 0.141685553828, 3},
+				        {14, "Eggplants | kg | retail", "eggplants", "kg", "retail", 67.9747839816, 12.676056338, 0.213113356528, 3},
+				        {46, "Onions (Imported, India) | kg | retail", "onions (imported, india)", "kg", "retail", 64.6130938254, 3.9729501268, 0.283335967859, 3},
+				        {3, "Bananas (Ripe) | 1 piece | retail", "bananas (ripe)", "1 piece", "retail", 60, 0, 1.60345629527, 3},
+				        {34, "Lemon (Medium Size) | 1 piece | retail", "lemon (medium size)", "1 piece", "retail", 60, -25.7142857143, 0.56749990027, 3},
+				        {68, "Spinach (Malabar) | kg | retail", "spinach (malabar)", "kg", "retail", 60, -50, 0.337122235771, 1},
+				        {16, "Eggs (White) | 1 piece | retail", "eggs (white)", "1 piece", "retail", 45.3769384269, 15.3846153846, 0.0730385382885, 4},
+				        {27, "Ginger (Imported) | kg | retail", "ginger (imported)", "kg", "retail", 38.1940693696, 9.375, 0.0972203468478, 1},
+				        {11, "Chili (Whole, Dry, Indian Teja) | kg | retail", "chili (whole, dry, indian teja)", "kg", "retail", 35.1052227594, 3.09285063159, 0.144597607481, 4},
+				        {47, "Oranges (Malta) | kg | retail", "oranges (malta)", "kg", "retail", 33.4760831774, -5.81395348837, 0.167380415887, 3},
+				        {42, "Oil (Mustard) | l | retail", "oil (mustard)", "l", "retail", 30.620809221, 1.47058823529, 0.138398163752, 3},
+				        {29, "Gourd (Bitter) | kg | retail", "gourd (bitter)", "kg", "retail", 29.8523274425, 4.7619047619, 0.101642589593, 3},
+				        {2, "Bananas (Green) | 1 piece | retail", "bananas (green)", "1 piece", "retail", 23.7421439358, -19.0476190476, 0.118710719679, 3},
+				        {1, "Apples (Royal Gala) | kg | retail", "apples (royal gala)", "kg", "retail", 23.4341573446, -1.0752688172, 0.117170786723, 3},
+				        {32, "Hyacinth (Sim) | kg | retail", "hyacinth (sim)", "kg", "retail", 21.6750017091, 0, 0.108375008545, 3},
+				        {43, "Oil (Palm) | l | retail", "oil (palm)", "l", "retail", 21.1513663071, 1.80279908279, 0.0877288407074, 3},
+				        {26, "Garlic (Imported, China) | kg | retail", "garlic (imported, china)", "kg", "retail", 20.0641034076, -8.15798829956, 0.100320517038, 4},
+				        {37, "Meat (Chicken, Broiler) | kg | retail", "meat (chicken, broiler)", "kg", "retail", 19.8328287868, 0, 0.0991641439342, 4},
+				        {39, "Milk | l | retail", "milk", "l", "retail", 18.4472048729, -1.3698630137, 0.0922360243646, 3},
+				        {18, "Fish (Dry, Belt 10-12"") | kg | retail", "fish (dry, belt 10-12"")", "kg", "retail", 18.3247010988, 2.63157894737, 0.0653077160203, 4},
+				        {9, "Chickpeas | kg | retail", "chickpeas", "kg", "retail", 15.4420602144, -17.0267731329, 0.077210301072, 4},
+				        {50, "Pumpkin | kg | retail", "pumpkin", "kg", "retail", 13.9414296136, 0, 0.0697071480678, 3},
+				        {53, "Rice (Brri-49) | kg | retail", "rice (brri-49)", "kg", "retail", 13.0860905152, -12.7962085308, 0.0654304525758, 2},
+				        {35, "Lentils (Masur) | kg | retail", "lentils (masur)", "kg", "retail", 10.6381634805, 0, 0.0531908174027, 4},
+				        {20, "Fish (Live, Tilapia) | kg | retail", "fish (live, tilapia)", "kg", "retail", 10.6169824878, 3.0303030303, 0.0227818821359, 3},
+				        {74, "Turmeric (Powder, Fresh) | kg | retail", "turmeric (powder, fresh)", "kg", "retail", 9.13275475853, -2.08333333333, 0.0456637737926, 1},
+				        {5, "Beans (Mung, Large Grain) | kg | retail", "beans (mung, large grain)", "kg", "retail", 8.54644201906, 0, 0.0427322100953, 3},
+				        {78, "Wheat Flour | kg | retail", "wheat flour", "kg", "retail", 8.51574336483, -2.04918032787, 0.0425787168241, 3},
+				        {59, "Rice (Gazi) | kg | retail", "rice (gazi)", "kg", "retail", 8.46596149914, -2.31213872832, 0.0423298074957, 2},
+				        {70, "Sugar | kg | retail", "sugar", "kg", "retail", 8.24977302557, 0.18697782301, 0.0393790868978, 4},
+				        {52, "Rice (Brri-29) | kg | retail", "rice (brri-29)", "kg", "retail", 8.09546387316, -3.93013100437, 0.0404773193658, 2},
+				        {19, "Fish (Live, Pangasius) | kg | retail", "fish (live, pangasius)", "kg", "retail", 7.393458885, -1.92307692308, 0.036967294425, 3},
+				        {36, "Meat (Beef) | kg | retail", "meat (beef)", "kg", "retail", 6.489481921, -9.09090909091, 0.032447409605, 2},
+				        {51, "Rice (Brri-28) | kg | retail", "rice (brri-28)", "kg", "retail", 5.29618250131, -0.769230769231, 0.0264809125066, 2},
+				        {44, "Oil (Soybean, Fortified) | l | retail", "oil (soybean, fortified)", "l", "retail", 5.2577642132, 0.0638732754216, 0.0256500883118, 4},
+				        {41, "Milk (Powder) | 500 g | retail", "milk (powder)", "500 g", "retail", 2.45354918659, -0.54347826087, 0.012267745933, 2},
+				        {65, "Salt (Iodized, Molla) | kg | retail", "salt (iodized, molla)", "kg", "retail", 1.45873683384, 0, 0.00729368416922, 4}
+				    })
+				in
+				    Source
+

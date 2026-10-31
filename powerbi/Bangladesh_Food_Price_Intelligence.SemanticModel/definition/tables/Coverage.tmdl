@@ -1,0 +1,54 @@
+table Coverage
+	lineageTag: 8d17176b-1506-449b-8170-3e2874ba664a
+
+	column month
+		dataType: string
+		lineageTag: a07081b4-b70c-4893-8c0f-209aeb4ccae9
+		sourceColumn: month
+
+	column series
+		dataType: double
+		lineageTag: ef05f656-c82b-45be-a5c0-8c9f05e20f3a
+		summarizeBy: sum
+		sourceColumn: series
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column markets
+		dataType: double
+		lineageTag: 31e2e124-b71a-478a-90cb-395f443f5548
+		summarizeBy: sum
+		sourceColumn: markets
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column broad_coverage
+		dataType: string
+		lineageTag: 3934f751-ed6f-4c6d-ae96-41bdc0424ca7
+		sourceColumn: broad_coverage
+
+	partition Coverage-snapshot = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [month = nullable text, series = nullable number, markets = nullable number, broad_coverage = nullable text], {
+				        {"2025-10", 54, 53, "True"},
+				        {"2025-11", 47, 4, "False"},
+				        {"2025-12", 52, 52, "True"},
+				        {"2026-01", 48, 48, "False"},
+				        {"2026-02", 51, 52, "True"},
+				        {"2026-03", 50, 52, "True"},
+				        {"2026-04", 49, 52, "True"},
+				        {"2026-05", 53, 98, "True"},
+				        {"2026-06", 19, 92, "False"},
+				        {"2026-07", 20, 95, "False"},
+				        {"2026-08", 1, 75, "False"},
+				        {"2026-09", 2, 14, "False"}
+				    })
+				in
+				    Source
+

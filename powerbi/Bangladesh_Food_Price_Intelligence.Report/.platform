@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Bangladesh_Food_Price_Intelligence"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "1eda2ba4-fd7b-4265-85bd-18244651c0e0"
+  }
+}

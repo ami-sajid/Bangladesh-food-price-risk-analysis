@@ -1,0 +1,18 @@
+BANGLADESH FOOD PRICE & INFLATION RISK ANALYSIS — SHOWCASE PACKAGE
+
+1. Open README.md for project overview.
+2. Open dashboards/interactive_dashboard.html for a fully interactive offline browser dashboard.
+3. Open case-study.html for the portfolio case study.
+4. Open showcase/Food_Price_Analysis_Report.pdf for the five-page analytical report.
+5. For Power BI Desktop on Windows: read powerbi/README_FIRST.md,
+   then open powerbi/Bangladesh_Food_Price_Intelligence.pbip and verify every page.
+6. Raw WFP dataset is intentionally NOT included. To reproduce, obtain the CSV
+   from the WFP/HDX source described in README and place it in data/raw/.
+   Then double-click run_all.bat to refresh the analysis, followed by
+   build_showcase.bat to refresh the portfolio dashboard and report.
+
+IMPORTANT
+- The PBIP is generated Power BI project source, not a pre-tested PBIX.
+- May 2026 is the project comparison month; newer observations do not pass
+  the coverage heuristic. Four-market Chittagong risk scope is not national.
+- Confirm exact WFP license before redistributing dataset or source excerpts.

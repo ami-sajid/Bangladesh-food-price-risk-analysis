@@ -1,0 +1,36 @@
+table Staples
+	lineageTag: b3c6fed9-1742-4c6f-9293-40a0b2bd82c0
+
+	column commodity
+		dataType: string
+		lineageTag: 9daaf603-ff51-4469-b0e9-a7f5deea1fb0
+		sourceColumn: commodity
+
+	column matched_markets
+		dataType: double
+		lineageTag: c8c8a6ba-79a8-43d4-90ee-c9ec8134dc51
+		summarizeBy: sum
+		sourceColumn: matched_markets
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column change_pct
+		dataType: double
+		lineageTag: 1e6e8f61-d4af-41ee-ab03-ee05a5ae58b2
+		sourceColumn: change_pct
+
+	partition Staples-snapshot = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [commodity = nullable text, matched_markets = nullable number, change_pct = nullable number], {
+				        {"oil (palm)", 46, 18.4493293195},
+				        {"wheat flour", 41, 8.68671816391},
+				        {"rice (coarse)", 27, 5.28483418507},
+				        {"lentils (masur)", 30, -5.25755898171}
+				    })
+				in
+				    Source
+

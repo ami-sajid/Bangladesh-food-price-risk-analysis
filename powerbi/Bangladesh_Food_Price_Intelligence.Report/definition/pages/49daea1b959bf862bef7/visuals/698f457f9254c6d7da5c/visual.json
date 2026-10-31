@@ -1,0 +1,84 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "698f457f9254c6d7da5c",
+  "position": {
+    "x": 680,
+    "y": 75,
+    "z": 0,
+    "height": 580,
+    "width": 565,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Staples"
+                    }
+                  },
+                  "Property": "commodity"
+                }
+              },
+              "queryRef": "Staples.commodity",
+              "nativeQueryRef": "commodity",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Staples"
+                        }
+                      },
+                      "Property": "change_pct"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Average(Staples.change_pct)",
+              "nativeQueryRef": "change_pct"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Core staples versus 2022 (%) · matched markets'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

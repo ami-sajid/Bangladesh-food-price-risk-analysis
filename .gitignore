@@ -1,0 +1,20 @@
+.env
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+data/raw/*.csv
+data/processed/*
+!data/processed/.gitkeep
+outputs/pipeline.log
+outputs/*.json
+outputs/*.db
+
+# Pipeline outputs can be regenerated from the upstream WFP CSV.
+outputs/tables/*.csv
+outputs/charts/*.png
+# Local browser/python tools
+**/.pbi/cache.abf
+**/.pbi/localSettings.json
+_pdf_preview/
+__node_modules__/

@@ -1,0 +1,13 @@
+{
+  "name": "MarketLensBase",
+  "dataColors": [
+    "#12B6A5",
+    "#4E89DB",
+    "#EA777E",
+    "#F4B75B",
+    "#766BDD"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#14243A",
+  "tableAccent": "#12B6A5"
+}

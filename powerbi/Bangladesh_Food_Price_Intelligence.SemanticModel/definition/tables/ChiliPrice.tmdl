@@ -1,0 +1,59 @@
+table ChiliPrice
+	lineageTag: d1ace3c5-2f1d-4f1e-a862-b854235b1735
+
+	column series_id
+		dataType: double
+		lineageTag: 5ee9fc6c-a26d-4ced-8da7-abf1f62c0b23
+		summarizeBy: sum
+		sourceColumn: series_id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column series_label
+		dataType: string
+		lineageTag: ca03a26b-e7b9-4377-9815-525414ec4a84
+		sourceColumn: series_label
+
+	column month
+		dataType: string
+		lineageTag: 1fb14cfe-0134-42b6-b112-5011705543f2
+		sourceColumn: month
+
+	column avg_price
+		dataType: double
+		lineageTag: 29e01848-5d09-43b8-a4eb-dba8c9093ae6
+		sourceColumn: avg_price
+
+	column market_count
+		dataType: double
+		lineageTag: d537014a-8155-4ad9-9db3-13633f65cb9b
+		summarizeBy: sum
+		sourceColumn: market_count
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition ChiliPrice-snapshot = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [series_id = nullable number, series_label = nullable text, month = nullable text, avg_price = nullable number, market_count = nullable number], {
+				        {10, "Chili (Green) | kg | retail", "2025-06", 58.3333333333, 3},
+				        {10, "Chili (Green) | kg | retail", "2025-07", 116.046666667, 3},
+				        {10, "Chili (Green) | kg | retail", "2025-08", 190.533333333, 3},
+				        {10, "Chili (Green) | kg | retail", "2025-09", 186.743333333, 3},
+				        {10, "Chili (Green) | kg | retail", "2025-10", 158.083333333, 3},
+				        {10, "Chili (Green) | kg | retail", "2025-11", 120, 3},
+				        {10, "Chili (Green) | kg | retail", "2025-12", 51.8766666667, 3},
+				        {10, "Chili (Green) | kg | retail", "2026-01", 100, 3},
+				        {10, "Chili (Green) | kg | retail", "2026-02", 96.43, 3},
+				        {10, "Chili (Green) | kg | retail", "2026-03", 68.3933333333, 3},
+				        {10, "Chili (Green) | kg | retail", "2026-04", 51.6333333333, 3},
+				        {10, "Chili (Green) | kg | retail", "2026-05", 80, 3}
+				    })
+				in
+				    Source
+

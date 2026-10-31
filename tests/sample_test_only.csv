@@ -1,0 +1,9 @@
+date,admin1,admin2,market,latitude,longitude,category,commodity,unit,priceflag,pricetype,currency,price,usdprice
+#date,#adm1+name,#adm2+name,#loc+market+name,#geo+lat,#geo+lon,#item+type,#item+name,#item+unit,#status,#item+price+type,#currency,#value,#value+usd
+2022-01-15, Dhaka ,Dhaka, Test Market ,23.7,90.4,cereals and tubers, Test Rice ,KG,actual,Retail,BDT,50,
+2022-02-15,Dhaka,Dhaka,Test Market,23.7,90.4,cereals and tubers,Test Rice,KG,actual,Retail,BDT,52,
+2022-02-15,Dhaka,Dhaka,Test Market,23.7,90.4,cereals and tubers,Test Rice,KG,actual,Retail,BDT,52,
+2022-03-15,Dhaka,Dhaka,Test Market,23.7,90.4,cereals and tubers,Test Rice,KG,actual,Retail,USD,60,
+bad-date,Dhaka,Dhaka,Test Market,23.7,90.4,cereals and tubers,Test Rice,KG,actual,Retail,BDT,55,
+2022-04-15,Dhaka,Dhaka,Test Market,23.7,90.4,cereals and tubers,Test Rice,KG,actual,Retail,BDT,-1,
+2022-05-15,Dhaka,Dhaka,Test Market,23.7,90.4,cereals and tubers,Test Rice,100 KG,actual,Retail,BDT,5000,

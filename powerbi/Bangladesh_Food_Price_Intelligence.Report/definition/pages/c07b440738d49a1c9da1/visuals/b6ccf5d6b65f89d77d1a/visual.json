@@ -1,0 +1,84 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "b6ccf5d6b65f89d77d1a",
+  "position": {
+    "x": 45,
+    "y": 80,
+    "z": 0,
+    "height": 590,
+    "width": 1190,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ChiliPrice"
+                    }
+                  },
+                  "Property": "month"
+                }
+              },
+              "queryRef": "ChiliPrice.month",
+              "nativeQueryRef": "month",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ChiliPrice"
+                        }
+                      },
+                      "Property": "avg_price"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Average(ChiliPrice.avg_price)",
+              "nativeQueryRef": "avg_price"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Green chili (retail, BDT/kg) · fixed markets · Jun 2025–May 2026'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
